@@ -48,7 +48,7 @@ function getUVIndex(lat,lng) {
       success: function(response) {
         var uv = response.result.uv
         spanUVEl.text(uv)
-        if (uv <= 3) {
+        if (uv >= 3) {
             spanUVEl.addClass("lowUV")
         }
       },
