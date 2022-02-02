@@ -26,10 +26,9 @@ var getWeatherConditions = function(city) {
                     wind:data.wind.speed,
                     humidity:data.main.humidity,
                     iconUrl:"http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png",
-                    coord:data.coord
+                    coord:data.coord,
+                    
                 }))
-
-                displayCurrentDayWeather(data.name)
             })
         } else {
             alert("City name not found")
