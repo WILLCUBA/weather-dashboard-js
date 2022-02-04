@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
@@ -23,58 +24,19 @@
                     <div class="btn btn-primary mb-1" id="search-button">Search</div>
                 </div>
                 <div class="cities-container d-flex flex-column" id="search-history">
+                    <ul class="d-flex flex-column" id="cities">
+                        
+                    </ul>
                 </div>   
             </div>
             <div class="col-8">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 p-1" style="border: 1px solid black;">
-                            <h3 class="" id="city-h3"><span id="city-name"></span> <span id="date"></span><span id="icon"></span></h3>
-                            <ul class="list-unstyled">
-                                <li class="p-1"> <p>Temp: <span id="temp"></span></p></li>
-                                <li class="p-1"><p>Wind: <span id="wind"></span></p></li>
-                                <li class="p-1"><p>Humidity: <span id="humidity"></span></p></li>
-                                <li class="p-1"><p>UV: <span class="p-1" id="uv"></span></p></li>
-                            </ul>
+                        <div class="col-12 p-1" id="currentDay" style="border: 1px solid black;">
+                            
                         </div>
-                        <div class="col-12"><h4>5-Day Forecast:</h4></div>
+                        <div class="col-12"><h4>4-Day Forecast:</h4></div>
                         <div class="col-12 d-flex flex-wrap justify-content-between" id="forecast-cards">
-                            <div class="card" style="width: 10rem;">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                  <p class="card-text"></p>
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 10rem;">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                  <p class="card-text"></p>
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 10rem;">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                  <p class="card-text"></p>
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 10rem;">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                  <p class="card-text"></p>
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
                         </div>
                         </div>
                     </div>

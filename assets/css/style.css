@@ -1,4 +1,26 @@
 .lowUV {
     background-color: #558B2F;
 }
+.modUV {
+    background-color: #F9A825;
+}
+.highUV {
+    background-color: #EF6C00;
+}
+.vhighUV {
+    background-color: #B71C1C;
+}
+.extrUV {
+    background-color: #6A1B9A;
+}
+#currentDay {
+    background-color: rgb(149, 30, 196);
+}
 
+.card {
+    background-color: rgb(110, 96, 96);
+    text-align: center;
+    padding: 15px;
+    font: 1.09em sans-serif;
+    border-radius: 10%;
+}
