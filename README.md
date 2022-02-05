@@ -36,7 +36,7 @@ A simple web application that allows users to search for a city to get the curre
 - This weather daskboard app is mobile compatible.
 
 ## Mock-Up
-![](assets/images/06-server-side-apis-homework-demo.png)
+![image](https://user-images.githubusercontent.com/51419545/152632631-c8b6513e-d391-4d64-80c1-27952dfbaffe.png)
 
 ## Technologies Use
 <p><a href="https://openweathermap.org/">OpenWeather API</a></p>
