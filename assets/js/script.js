@@ -10,6 +10,8 @@ var searchHist = $("#search-history")
 var cities = Object.keys(localStorage)
 var frctext = ""
 
+$(Storage.clear())
+
 var getWeatherConditions = function(city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey+"&units=imperial"
     fetch(apiUrl).then(function(response) {
