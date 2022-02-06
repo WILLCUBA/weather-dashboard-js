@@ -45,6 +45,6 @@ A simple web application that allows users to search for a city to get the curre
 
 
 ## Contributor:
-William Pinero ©2022 All Rights Reserved.
+William Pinero ©2022
 - - -
 
