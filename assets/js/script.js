@@ -15,8 +15,6 @@ if (!localStorage.getItem("cities")) {
     var cities = [];
 } else var cities = JSON.parse(localStorage.getItem("cities"))
 
-console.log(cities);
-console.log(typeof(cities));
 
 var getWeatherConditions = function(city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey+"&units=imperial"
@@ -30,7 +28,6 @@ var getWeatherConditions = function(city) {
                     cities.push(currentCity)    
                 }
                 localStorage.setItem("cities",JSON.stringify(cities))
-                console.log(localStorage.getItem("cities"));
                 displayDailyForecast(currentCity)
                 displayCurrentDay(data,currentCity)
                 getUVIndex(data.coord.lat,data.coord.lon)
@@ -51,7 +48,6 @@ function getUVIndex(lat,lng) {
       },
       url: 'https://api.openuv.io/api/v1/uv?lat=' + lat + '&lng=' + lng,
       success: function(response) {
-          console.log(response);
         var uv = response.result.uv
         var frcUV = $("<p>")
         frcUV.text("UV INNDEX: "+uv)
@@ -78,6 +74,10 @@ function getUVIndex(lat,lng) {
 
 
 var renderSearchHist = function(currentCity){
+    if (cities.includes(currentCity) || currentCity === "") {
+        console.log("already in cities[]");
+        return
+    }
     if (!currentCity) {
         cities.forEach(element => {
             var divCity = $("<div>")
@@ -85,9 +85,8 @@ var renderSearchHist = function(currentCity){
             searchHist.append(divCity)
         });
         
-    } else if (cities.includes(currentCity)) {
-        console.log("already in cities[]");
-    } else if(currentCity) {
+    }  
+    else if(currentCity) {
         var divCity = $("<div>")
             divCity.text(currentCity).addClass("btn").addClass("btn-secondary")
             searchHist.append(divCity)
@@ -106,7 +105,6 @@ var displayCurrentDay = function(data,currentCity) {
     cdInfo.append(pDate)
     //icon
     let cdImg = $("<img>")
-    console.log("https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
     cdImg.attr("src","https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
     cdInfo.append(cdImg)
     //temperature
