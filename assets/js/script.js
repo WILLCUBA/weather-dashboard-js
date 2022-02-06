@@ -180,7 +180,7 @@ searchBox.on("click","div",function(){
 })
 
 
-searchHist.on("click","li",function(){
+searchHist.on("click","div",function(){
     getWeatherConditions($(this).text());
 })
 
