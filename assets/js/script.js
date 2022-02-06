@@ -33,7 +33,7 @@ var getWeatherConditions = function(city) {
                 console.log(localStorage.getItem("cities"));
                 displayDailyForecast(currentCity)
                 displayCurrentDay(data,currentCity)
-                //getUVIndex(data.coord.lat,data.coord.lon)
+                getUVIndex(data.coord.lat,data.coord.lon)
             })
         } else {
             alert("City name not found")
@@ -42,66 +42,57 @@ var getWeatherConditions = function(city) {
     })
 }
 
-// function getUVIndex(lat,lng) {
-//     $.ajax({
-//       type: 'GET',
-//       dataType: 'json',
-//       beforeSend: function(request) {
-//         request.setRequestHeader('x-access-token', '65113a2397cbf76a91327f31e2bcf2db');
-//       },
-//       url: 'https://api.openuv.io/api/v1/uv?lat=' + lat + '&lng=' + lng,
-//       success: function(response) {
-//           console.log(response);
-//         var uv = response.result.uv
-//         var frcUV = $("<p>")
-//         frcUV.text("UV INNDEX: "+uv)
-//         $("#currentDay").append(frcUV).addClass("h4")
-//         if (uv < 3) {
-//             frcUV.attr("class","lowUV")
-//         } else if (3<uv && uv<6) {
-//             frcUV.attr("class","modUV")
-//         } else if (6<uv&&uv<8) {
-//             frcUV.attr("class","highUV")
-//         } else if (8<uv&&uv<11){
-//             frcUV.attr("class","vhighUV")
-//         } else {
-//             frcUV.attr("class","extrUV")
-//         }
-//       },
-//       error: function(response) {
-//         alert("UV API ERROR")
-//       }
-//     });
-//    }
+function getUVIndex(lat,lng) {
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function(request) {
+        request.setRequestHeader('x-access-token', '65113a2397cbf76a91327f31e2bcf2db');
+      },
+      url: 'https://api.openuv.io/api/v1/uv?lat=' + lat + '&lng=' + lng,
+      success: function(response) {
+          console.log(response);
+        var uv = response.result.uv
+        var frcUV = $("<p>")
+        frcUV.text("UV INNDEX: "+uv)
+        $("#currentDay").append(frcUV).addClass("h4")
+        if (uv < 3) {
+            frcUV.attr("class","lowUV")
+        } else if (3<uv && uv<6) {
+            frcUV.attr("class","modUV")
+        } else if (6<uv&&uv<8) {
+            frcUV.attr("class","highUV")
+        } else if (8<uv&&uv<11){
+            frcUV.attr("class","vhighUV")
+        } else {
+            frcUV.attr("class","extrUV")
+        }
+      },
+      error: function(response) {
+        alert("UV API ERROR")
+      }
+    });
+   }
 
 
 
 
-var renderSearchHist = function(currentCity) {
-    if(localStorage.length === 0 || currentCity === "") {
-        console.log("nothing in local storage");
-        return false
-    } 
-    
-    cities.forEach(element => {
-    var btnSrch = $("<li>")
-    btnSrch.text(element)
-    btnSrch.addClass("btn")
-    btnSrch.addClass("btn-secondary")
-    btnSrch.addClass("citiesLi")
-    citiesUlEl.append(btnSrch)
-    // } else if (currentCity === String) {
-    //     var btnSrch = $("<li>")
-    //     btnSrch.text(currentCity)
-    //     btnSrch.addClass("btn")
-    //     btnSrch.addClass("btn-secondary")
-    //     btnSrch.addClass("citiesLi")
-    //     btnSrch.attr("id",currentCity)
-    //     citiesUlEl.append(btnSrch)
-
-    // }   
-    })
-    }   
+var renderSearchHist = function(currentCity){
+    if (!currentCity) {
+        cities.forEach(element => {
+            var divCity = $("<div>")
+            divCity.text(element).addClass("btn").addClass("btn-secondary")
+            searchHist.append(divCity)
+        });
+        
+    } else if (cities.includes(currentCity)) {
+        console.log("already in cities[]");
+    } else if(currentCity) {
+        var divCity = $("<div>")
+            divCity.text(currentCity).addClass("btn").addClass("btn-secondary")
+            searchHist.append(divCity)
+    }
+}    
 var displayCurrentDay = function(data,currentCity) {
     //cd = current day
     $("#currentDay").html("")
@@ -184,9 +175,7 @@ var displayDailyForecast = function(currentCity) {
 searchBox.on("click","div",function(){
     let currentCity = inputSearchEl.val()
     getWeatherConditions(currentCity);
-    if (!cities.includes(currentCity)) {
-        renderSearchHist(currentCity)
-    }
+    renderSearchHist(currentCity)
     inputSearchEl.val("")
 })
 
